@@ -43,3 +43,5 @@ Don't rely on the information given by this tool.
 To my knowledge there is no official documentation on how to do this. Everything was created by starring at numbers, a lot of guesswork and finding fragments somewhere on the web. It is possible that some assignments or calculations are incorrect.
 
 This program is provided as is. If anything, it is a toy for the curious. Nothing more. Use it at your own risk.
+
+Regards to Florian Huehn <hattedsquirrel@gmail.com> 
