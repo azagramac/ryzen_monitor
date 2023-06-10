@@ -22,7 +22,8 @@ This tool is based on the [ryzen_smu](https://github.com/AzagraMac/ryzen_smu) ke
 Note: Support also depends on the PM table version that ships with your BIOS and whether ryzen_monitor already knows how to read it.
 
 ## Screenshot
-![ryzen monitor](https://user-images.githubusercontent.com/50338637/107124627-4e733e00-68a5-11eb-9596-bb3d35120a73.png)
+![Captura desde 2023-06-10 17-51-26](https://github.com/AzagraMac/ryzen_monitor/assets/571796/3d8fa524-d09e-4325-930b-7e1526997d4f)
+
 
 ## Building
 First install the kernel module from [ryzen_smu](https://github.com/AzagraMac/ryzen_smu).
