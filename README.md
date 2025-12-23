@@ -1,4 +1,13 @@
-# ryzen_monitor
+# ryzen_monitor (Fork)
+
+> [!NOTE]
+> This is a **maintenance fork** of [AzagraMac/ryzen_monitor](https://github.com/AzagraMac/ryzen_monitor).
+> It contains patches for:
+> - Newer `ryzen_smu` driver compatibility (v0.1.3+)
+> - Scripting support (`-1` single-shot mode)
+> 
+> Unless you need these specific features, please refer to the [upstream repository](https://github.com/AzagraMac/ryzen_monitor).
+
 Monitor power information of Ryzen processors via the PM table of the SMU.
 
 This tool is based on the [ryzen_smu](https://github.com/AzagraMac/ryzen_smu) kernel module for reading the PM Table from the SMU. It is a continuation of the demo-tool provided with that project.

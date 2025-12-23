@@ -42,6 +42,7 @@
 smu_obj_t obj;
 static int update_time_s = 1;
 static int show_disabled_cores = 0;
+static int run_once = 0;
 
 void print_line(const char* label, const char* value_format, ...) {
     static char buffer[1024];
@@ -422,11 +423,18 @@ void start_pm_monitor(unsigned int force) {
         if (smu_read_pm_table(&obj, pm_buf, obj.pm_table_size) != SMU_Return_OK)
             continue;
 
-        fprintf(stdout, "\e[1;1H\e[2J"); //Move cursor to (1,1); Clear entire screen
+        if (!run_once) {
+            fprintf(stdout, "\e[1;1H\e[2J"); //Move cursor to (1,1); Clear entire screen
+        }
         draw_screen(&pmt, &sysinfo);
-        fprintf(stdout, "\e[?25l"); // Hide Cursor
+        if (!run_once) {
+            fprintf(stdout, "\e[?25l"); // Hide Cursor
+        }
         fflush(stdout);
 
+        if (run_once) {
+            break;
+        }
         sleep(update_time_s);
     }
 }
@@ -487,6 +495,7 @@ void show_help(char* program) {
         "Options:\n"
             "\t-h            - Show this help screen.\n"
             "\t-v            - Show program version.\n"
+            "\t-1            - Single-shot mode: print stats once and exit.\n"
             "\t-m            - Print DRAM Timings and exit.\n"
             "\t-d            - Show disabled cores.\n"
             "\t-u<seconds>   - Update the monitoring only after this number of second(s) have passed. Defaults to 1.\n"
@@ -523,8 +532,11 @@ int main(int argc, char** argv) {
     }
 
     //Parse arguments
-    while ((c = getopt(argc, argv, "vmd::f:t:u:h")) != -1) {
+    while ((c = getopt(argc, argv, "1vmd::f:t:u:h")) != -1) {
         switch (c) {
+            case '1':
+                run_once = 1;
+                break;
             case 'v':
                 print_version();
                 exit(0);
